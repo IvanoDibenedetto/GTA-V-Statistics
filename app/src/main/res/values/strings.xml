@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Statistics</string>
+    <string name="save_cookie_key">COOKIE</string>
+    <string name="refresh">Refresh</string>
+    <string name="events">Events</string>
+    <string-array name="stat_detail">
+        <item>OVERALL</item>
+        <item>CAREER</item>
+        <item>CASH</item>
+        <item>VEHICLES</item>
+        <item>CRIMES</item>
+        <item>GENERAL</item>
+        <item>COMBAT</item>
+        <item>WEAPONS</item>
+
+    </string-array>
+
+</resources>

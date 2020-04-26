@@ -1,0 +1,2 @@
+rootProject.name='GTA V - Online stats'
+include ':app'

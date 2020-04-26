@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="verde">#32BD00</color>
+    <color name="grigio">#838383</color>
+    <color name="riga1">#A465FF</color>
+    <color name="nero">#2C2C2C</color>
+    <color name="trasparente">#00000000</color>
+</resources>
