@@ -88,15 +88,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
+        MainActivity.this.setTitle("GTA V - Online statistics");
+        setContentView(R.layout.activity_main);
+
+        wb = findViewById(R.id.idWebView);
         if(ReadPolicy()==0) {
+            wb.setVisibility(View.INVISIBLE);
             Intent i = new Intent(this, PrivacyActivity.class);
             startActivityForResult(i, 0);
         }
-
-
-
-        MainActivity.this.setTitle("GTA V - Online statistics");
-        setContentView(R.layout.activity_main);
 
         tl = findViewById(R.id.idTable);
         sp = findViewById(R.id.idSpinner);
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        wb = findViewById(R.id.idWebView);
+
         pb = findViewById(R.id.idProgressbar);
         pb.setVisibility(View.INVISIBLE);
 
@@ -191,6 +191,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
         if(resultCode==RESULT_OK){
+            if(wb.getVisibility()== View.INVISIBLE)
+                wb.setVisibility(View.VISIBLE);
             SavePolicy();
         }
         super.onActivityResult(requestCode, resultCode, data);
