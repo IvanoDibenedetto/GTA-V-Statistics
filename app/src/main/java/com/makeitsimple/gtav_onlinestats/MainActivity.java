@@ -1,13 +1,16 @@
 package com.makeitsimple.gtav_onlinestats;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Layout;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -35,6 +38,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
@@ -82,6 +86,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        if(ReadPolicy()==0) {
+            Intent i = new Intent(this, PrivacyActivity.class);
+            startActivityForResult(i, 0);
+        }
+
+
 
         MainActivity.this.setTitle("GTA V - Online statistics");
         setContentView(R.layout.activity_main);
@@ -173,6 +185,15 @@ public class MainActivity extends AppCompatActivity {
             wb.getSettings().setDomStorageEnabled(true);
 
             wb.loadUrl("https://socialclub.rockstargames.com/profile/signin");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        if(resultCode==RESULT_OK){
+            SavePolicy();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -740,6 +761,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void LoadEvents(MenuItem item) {
         Toast.makeText(this,"Online events coming soon...",Toast.LENGTH_LONG).show();
+
     }
+
+    public void SavePolicy(){
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(getString(R.string.policy_key), 1);
+        editor.apply();
+    }
+    public int ReadPolicy(){
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        return sharedPref.getInt(getString(R.string.policy_key), 0);
+    }
+
 }
 

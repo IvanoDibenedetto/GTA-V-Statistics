@@ -17,4 +17,9 @@
         <item name="android:background">@drawable/spinner_icon</item>
     </style>
 
+
+    <style name="PopupTheme">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
 </resources>

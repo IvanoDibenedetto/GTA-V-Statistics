@@ -19,7 +19,6 @@
 
 
 
-
     <ScrollView
         android:id="@+id/idScroll"
         android:layout_marginTop="80sp"
